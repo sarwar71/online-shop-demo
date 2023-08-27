@@ -1,0 +1,107 @@
+/* reset code and common starts here */
+* {
+    box-sizing: border-box;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    text-decoration: none;
+}
+
+/* reset code and common ends here */
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_bar {
+    display: flex;
+    background-color: lightseagreen;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_left {
+    list-style-type: none;
+    display: flex;
+    text-underline: none;
+    font-size: 25px;
+}
+
+.nav_right {
+    margin-left: 10rem;
+    font-size: 23px;
+}
+
+.main {
+    display: flex;
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.side_content {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    align-items: start;
+    background-color: lightgray;
+    padding-top: 0.5rem;
+    padding-left: 2rem;
+    margin-right: 0.5rem;
+    border: 2px solid cadetblue;
+}
+
+.products {
+    width: 60%;
+    background-color: lightgray;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 2px solid cadetblue;
+}
+
+.product {
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    background-color: cadetblue;
+    margin: 0.5rem;
+}
+
+
+@media (max-width: 992px) {
+    .products{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .main{
+        flex-direction: column;
+    }
+    .nav_bar{
+        flex-direction: column;
+        height: 12vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .products{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .main{
+        flex-direction: column;
+    }
+
+    .nav_bar{
+        height: 36vh;
+    }
+    .nav_left{
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: sarwar
+  Date: 8/12/23
+  Time: 11:08 PM
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Add Product</title>
+    <style>
+        .error {
+            color: red
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <h:form enctype="multipart/form-data">
+
+        <h2>Add Product</h2>
+
+        <h:panelGrid columns="3">
+
+            <h:outputLabel>Select Category Name</h:outputLabel>
+            <h:selectOneMenu id="select_menu"
+                             value="#{subCategoryBean.category.catName}"
+                             required="true"
+                             requiredMessage="Select Category Name.">
+                <f:selectItem itemLabel="Select Category" itemValue=""/>
+                <f:selectItems value="#{categoryBean.getCategoryNames()}"/>
+                <f:ajax render="subCat"/>
+            </h:selectOneMenu>
+            <h:message for="select_menu" styleClass="error"/>
+
+            <h:outputLabel>Select Sub Category Name</h:outputLabel>
+            <h:selectOneMenu id="subCat"
+                             value="#{productBean.subCategory.subCatName}"
+                             required="true"
+                             requiredMessage="Select Sub Category Name.">
+                <f:selectItem itemLabel="Select Sub Category" itemValue=""/>
+                <f:selectItems value="#{subCategoryBean.getSubCategoryNamesByCategory()}"/>
+            </h:selectOneMenu>
+            <h:message for="subCat" styleClass="error"/>
+
+            <h:outputLabel>Product Name</h:outputLabel>
+            <h:inputText id="product_name"
+                         value="#{productBean.product.productName}"
+                         required="true"
+                         requiredMessage="Product Name is mandatory."/>
+            <h:message for="product_name" styleClass="error"/>
+
+            <h:outputLabel>Product Qty</h:outputLabel>
+            <h:inputText id="product_qty"
+                         value="#{productBean.product.productQty}"
+                         required="true"
+                         requiredMessage="Product Qty is mandatory."/>
+            <h:message for="product_qty" styleClass="error"/>
+
+            <h:outputLabel>Product Price</h:outputLabel>
+            <h:inputText id="product_price"
+                         value="#{productBean.product.productPrice}"
+                         required="true"
+                         requiredMessage="Product Qty is mandatory."/>
+            <h:message for="product_price" styleClass="error"/>
+
+            <h:outputLabel>Select Image</h:outputLabel>
+            <h:inputFile id="pro_image"
+                         value="#{productBean.uploadedFile}"
+                         required="true"
+                         requiredMessage="Product Image is mandatory.">
+            </h:inputFile>
+            <h:message for="pro_image" styleClass="error"/>
+
+            <h:outputLabel>Product Description</h:outputLabel>
+            <h:inputTextarea id="product_description" value="#{productBean.product.productDesc}"/>
+            <h:message for="product_description" styleClass="error"/>
+
+            <h:commandButton value="Save" action="#{productBean.addProduct}"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+
+</html>
