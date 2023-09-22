@@ -1,0 +1,21 @@
+<h:panelGroup styleClass="nav_bar"
+              xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ul class="nav_left">
+        <li style="margin-right: 1rem;"><a
+                href="#{request.contextPath}/product/view_product.xhtml">Home</a></li>
+        <li style="margin-right: 1rem;"><a
+                href="#{request.contextPath}/product/add_product.xhtml">Add Product</a></li>
+        <li style="margin-right: 1rem;"><a
+                href="#{request.contextPath}/category/add_category.xhtml">Add Category</a></li>
+        <li><a href="#{request.contextPath}/category/add_sub_category.xhtml">Add Sub Category</a></li>
+    </ul>
+    <h3 class="nav_right">
+        <h:outputLabel value="Cart:" style="margin-right: 0.3rem"/>
+        <h:outputText value="#{shoppingCartBean.cartSize} #{shoppingCartBean.item}" id="cart"/>
+        <h:outputLink style="margin-left: 0.5rem" value="#{request.contextPath}/cart/view_cart.xhtml"
+                      faces-redirect="true"
+                      target="_blank">View cart</h:outputLink>
+    </h3>
+</h:panelGroup>

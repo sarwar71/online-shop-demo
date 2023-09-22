@@ -16,35 +16,44 @@
 
 <h:head>
     <title>Add Category</title>
-    <style>
-        .error {
-            color: red
-        }
-    </style>
+    <h:outputStylesheet library="css" name="style.css" type="text/css"/>
 </h:head>
 
 <h:body>
-    <h:form>
 
-        <h2>Add Category</h2>
 
-        <h:panelGrid columns="3">
+    <h:panelGroup styleClass="main">
 
-            <h:outputLabel>Category Name</h:outputLabel>
-            <h:inputText id="cat_name"
-                         value="#{categoryBean.category.catName}"
-                         required="true"
-                         requiredMessage="Category Name is mandatory."/>
-            <h:message for="cat_name" styleClass="error"/>
+        <ui:include src="../commons/navigation.xhtml"></ui:include>
 
-            <h:outputLabel>Category Description</h:outputLabel>
-            <h:inputTextarea id="cat_desc" value="#{categoryBean.category.catDesc}"/>
-            <h:message for="cat_desc" styleClass="error"/>
+        <h:panelGroup style="margin-top: 6vh">
+            <h:form>
 
-            <h:commandButton value="Save" action="#{categoryBean.addCategory}"/>
+                <h2>Add Category</h2>
 
-        </h:panelGrid>
-    </h:form>
+                <h:panelGrid columns="3" style="margin-top: 5px">
+
+                    <h:outputLabel>Category Name</h:outputLabel>
+                    <h:inputText id="cat_name"
+                                 value="#{categoryBean.category.catName}"
+                                 required="true"
+                                 requiredMessage="Category Name is mandatory."
+                                 style="width: 20rem"/>
+                    <h:message for="cat_name" styleClass="error"/>
+
+                    <h:outputLabel>Category Description</h:outputLabel>
+                    <h:inputTextarea id="cat_desc" value="#{categoryBean.category.catDesc}" rows="4"
+                                     style="resize: none; width: 20rem"/>
+                    <h:message for="cat_desc" styleClass="error"/>
+
+                    <h:commandButton value="Save" action="#{categoryBean.addCategory}"/>
+
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
 </h:body>
 
 </html>

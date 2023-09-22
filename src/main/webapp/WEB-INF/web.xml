@@ -21,4 +21,10 @@
         <welcome-file>product/view_product.xhtml</welcome-file>
     </welcome-file-list>
 
+    <data-source>
+        <name>java:global/DataSourceName</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <url>jdbc:mysql://localhost:3306/online_shop?useSSL=false</url>
+    </data-source>
+
 </web-app>

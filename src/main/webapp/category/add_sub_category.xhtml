@@ -10,44 +10,50 @@
 
 <h:head>
     <title>Add Sub Category</title>
-    <style>
-        .error {
-            color: red
-        }
-    </style>
+    <h:outputStylesheet library="css" name="style.css" type="text/css"/>
 </h:head>
 
 <h:body>
-    <h:form>
+    <h:panelGroup styleClass="main">
 
-        <h2>Add Sub Category</h2>
+        <ui:include src="../commons/navigation.xhtml"></ui:include>
 
-        <h:panelGrid columns="3">
+        <h:panelGroup style="margin-top: 6vh">
+            <h:form>
 
-            <h:outputLabel>Select Category Name</h:outputLabel>
-            <h:selectOneMenu id="select_menu"
-                             value="#{subCategoryBean.category.catName}"
-                             required="true"
-                             requiredMessage="Select Category Name.">
-                <f:selectItem itemLabel="Select Category" itemValue=""/>
-                <f:selectItems value="#{categoryBean.getCategoryNames()}"/>
-            </h:selectOneMenu>
-            <h:message for="select_menu" styleClass="error"/>
+                <h2>Add Sub Category</h2>
 
-            <h:outputLabel>Sub Category Name</h:outputLabel>
-            <h:inputText id="sub_cat_name"
-                         value="#{subCategoryBean.subCategory.subCatName}"
-                         required="true"
-                         requiredMessage="Sub Category Name is mandatory."/>
-            <h:message for="sub_cat_name" styleClass="error"/>
+                <h:panelGrid columns="3" style="margin-top: 5px">
 
-            <h:outputLabel>Sub Category Description</h:outputLabel>
-            <h:inputTextarea id="sub_cat_desc" value="#{subCategoryBean.subCategory.subCatDesc}"/>
-            <h:message for="sub_cat_desc" styleClass="error"/>
+                    <h:outputLabel>Select Category Name</h:outputLabel>
+                    <h:selectOneMenu id="select_menu"
+                                     value="#{subCategoryBean.category.catName}"
+                                     required="true"
+                                     requiredMessage="Select Category Name."
+                                     style="width: 20rem">
+                        <f:selectItem itemLabel="Select Category" itemValue=""/>
+                        <f:selectItems value="#{categoryBean.getCategoryNames()}"/>
+                    </h:selectOneMenu>
+                    <h:message for="select_menu" styleClass="error"/>
 
-            <h:commandButton value="Save" action="#{subCategoryBean.addSubCategory}"/>
-        </h:panelGrid>
-    </h:form>
+                    <h:outputLabel>Sub Category Name</h:outputLabel>
+                    <h:inputText id="sub_cat_name"
+                                 value="#{subCategoryBean.subCategory.subCatName}"
+                                 required="true"
+                                 requiredMessage="Sub Category Name is mandatory."
+                                 style="width: 20rem"/>
+                    <h:message for="sub_cat_name" styleClass="error"/>
+
+                    <h:outputLabel>Sub Category Description</h:outputLabel>
+                    <h:inputTextarea id="sub_cat_desc" value="#{subCategoryBean.subCategory.subCatDesc}" rows="4"
+                                     style="resize: none; width: 20rem"/>
+                    <h:message for="sub_cat_desc" styleClass="error"/>
+
+                    <h:commandButton value="Save" action="#{subCategoryBean.addSubCategory}"/>
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+    </h:panelGroup>
 </h:body>
 
 </html>
