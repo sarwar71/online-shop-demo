@@ -1,4 +1,4 @@
-package com.jsf.onlineshop.demo.beans;
+package com.jsf.onlineshop.demo.view;
 
 import com.jsf.onlineshop.demo.models.Category;
 import com.jsf.onlineshop.demo.models.Product;

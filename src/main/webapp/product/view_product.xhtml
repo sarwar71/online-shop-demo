@@ -23,38 +23,36 @@
         <h:panelGroup styleClass="main">
 
             <h:panelGroup styleClass="side_content">
-
-                <h:commandButton value="Filter" style="width: 70px; height: 30px; font-size: 17px">
-                    <f:ajax render="update_products"/>
-                </h:commandButton>
-
-                <h:panelGroup>
-                    <h3>Categories</h3>
-                    <h:panelGroup style="display: inline;">
-                        <ui:repeat value="#{categoryBean.getCategoryNames()}" var="categoryName">
-                            <h:selectManyCheckbox value="#{categoryBean.categorySelected}">
-                                <f:selectItem itemValue="#{categoryName}" itemLabel="#{categoryName}"/>
-                                <f:ajax event="click" listener="#{productBean.selectCategory(categoryName)}"/>
-                            </h:selectManyCheckbox>
-                        </ui:repeat>
+                <h:form>
+                    <h:panelGroup>
+                        <h3>Categories</h3>
+                        <h:panelGroup style="display: inline;">
+                            <ui:repeat value="#{categoryBean.getCategoryNames()}" var="categoryName">
+                                <h:selectManyCheckbox value="#{categoryBean.categorySelected}">
+                                    <f:selectItem itemValue="#{categoryName}" itemLabel="#{categoryName}"/>
+                                    <f:ajax render="update_product_list"
+                                            listener="#{productBean.selectCategory(categoryName)}"/>
+                                </h:selectManyCheckbox>
+                            </ui:repeat>
+                        </h:panelGroup>
                     </h:panelGroup>
-                </h:panelGroup>
 
-                <h:panelGroup>
-                    <h3>Brand</h3>
-                    <h:panelGroup style="display: inline;">
-                        <ui:repeat value="#{subCategoryBean.getSubCategoryNames()}" var="brandName">
-                            <h:selectManyCheckbox value="#{categoryBean.categorySelected}">
-                                <f:selectItem itemValue="#{brandName}" itemLabel="#{brandName}"/>
-                                <f:ajax listener="#{productBean.selectBrand(brandName)}"/>
-                            </h:selectManyCheckbox>
-                        </ui:repeat>
+                    <h:panelGroup>
+                        <h3>Brand</h3>
+                        <h:panelGroup style="display: inline;">
+                            <ui:repeat value="#{subCategoryBean.getSubCategoryNames()}" var="brandName">
+                                <h:selectManyCheckbox value="#{categoryBean.categorySelected}">
+                                    <f:selectItem itemValue="#{brandName}" itemLabel="#{brandName}"/>
+                                    <f:ajax render="update_product_list"
+                                            listener="#{productBean.selectBrand(brandName)}"/>
+                                </h:selectManyCheckbox>
+                            </ui:repeat>
+                        </h:panelGroup>
                     </h:panelGroup>
-                </h:panelGroup>
-
+                </h:form>
             </h:panelGroup>
 
-            <h:panelGroup styleClass="products" id="update_products">
+            <h:panelGroup styleClass="products" id="update_product_list">
 
                 <ui:repeat var="productItem" value="#{(productBean.getAllProduct().size() !=0)
                     ? productBean.getAllProduct() : false}">
@@ -75,8 +73,11 @@
                                          action="#{shoppingCartBean.addToCart(productItem)}"/>
                     </h:panelGrid>
                 </ui:repeat>
+
             </h:panelGroup>
+
         </h:panelGroup>
+
     </h:panelGroup>
 </h:body>
 
